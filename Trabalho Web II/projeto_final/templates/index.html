@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<form id="filtro">
+    <input type="text" name="busca" placeholder="Buscar..." id="busca">
+    <select name="categoria">
+        <option value="">Todas Categorias</option>
+        <option>Trabalho</option>
+        <option>Estudos</option>
+        <option>Pessoal</option>
+    </select>
+    <button>Filtrar</button>
+</form>
+
+<ul class="lista">
+    {% for t in tarefas %}
+    <li class="{% if t.concluida %}done{% endif %}">
+        {% if t.imagem %}
+        <img src="{{ url_for('static', filename='img/' ~ t.imagem) }}">
+        {% endif %}
+
+        <strong>{{ t.titulo }}</strong> — {{ t.categoria }}
+        
+        {% if t.descricao %}
+        <p>{{ t.descricao }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('concluir', id=t.id) }}">✔</a>
+        <a href="{{ url_for('editar', id=t.id) }}">✏</a>
+        <a href="{{ url_for('deletar', id=t.id) }}">🗑</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

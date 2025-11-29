@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <title>Sistema de tarefas</title>
+</head>
+<body>
+
+<header>
+    <div class="titulo-header">
+        <h1>Sistema de tarefas</h1>
+        <img src="{{ url_for('static', filename='img/072120-ToDoList-Blog-removebg-preview.png') }}" 
+             alt="Logo" class="logo">
+    </div>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Início</a>
+        <a href="{{ url_for('adicionar') }}">Adicionar Tarefa</a>
+    </nav>
+</header>
+
+
+<div class="container">
+    {% block conteudo %}{% endblock %}
+</div>
+
+<footer class="rodape">
+    <p><strong>Equipe do Projeto:</strong></p>
+    <p>Kaynara Terezinha de Jesus Silva Queiroz</p>
+    <p>Eric da Silva Ramos</p>
+    <p>Miguel Gomes Maia</p>
+
+    <p class="copy">Desenvolvimento Web II — IFCE Campus Maranguape</p>
+</footer>
+
+</body>
+</html>
